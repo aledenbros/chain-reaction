@@ -21,7 +21,7 @@
         "**/*.ico": true,
         "**/*.jpg": true,
         "**/*.jpeg": true,
-        "**/*.png": true,
+        "**/*.png": false,
         "**/*.psd": true,
         "**/*.tga": true,
         "**/*.tif": true,
@@ -40,7 +40,7 @@
         "**/*.cubemap": true,
         "**/*.flare": true,
         "**/*.mat": true,
-        "**/*.meta": true,
+        "**/*.meta": false,
         "**/*.prefab": true,
         "**/*.unity": true,
         "build/": true,
@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Chain Reaction.sln"
+    "dotnet.defaultSolution": "chain-reaction.sln"
 }
