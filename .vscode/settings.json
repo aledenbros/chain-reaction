@@ -14,6 +14,12 @@
         "**/*.dll": true,
         "**/*.mid": true,
         "**/*.midi": true,
+        "**/*.wav": false,
+        "**/*.gif": false,
+        "**/*.ico": false,
+        "**/*.jpg": false,
+        "**/*.jpeg": false,
+        "**/*.png": false,
         "**/*.psd": true,
         "**/*.tga": true,
         "**/*.tif": true,
@@ -32,6 +38,7 @@
         "**/*.cubemap": true,
         "**/*.flare": true,
         "**/*.mat": true,
+        "**/*.meta": false,
         "**/*.prefab": true,
         "**/*.unity": true,
         "build/": true,
@@ -47,5 +54,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Chain Reaction.sln"
+    "dotnet.defaultSolution": "chain-reaction.sln"
 }
