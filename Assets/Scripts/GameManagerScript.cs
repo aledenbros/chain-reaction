@@ -7,7 +7,7 @@ public class GameManagerScript : MonoBehaviour
 {
     private Player human;
     private Player computer;
-    private bool isHumanTurn;
+    public bool isHumanTurn { get; }
 
     // 0 for taking stage, 1 for attacking stage
     private int turnState;
