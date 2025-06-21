@@ -140,11 +140,19 @@ public class BoardManagerScript : MonoBehaviour
 
             if (simulationClock < 0)
             {
-                board.Step();
-                DrawLaserHeads();
+                if (board.IsFinished())
+                {
+                    isSimulating = false;
+                    simulationClock = 0.1f;
+                } 
+                else
+                {
+                    board.Step();
+                    DrawLaserHeads();
 
+                    simulationClock = 0.1f;
+                }
 
-                simulationClock = 0.1f;
             }
         }
     }

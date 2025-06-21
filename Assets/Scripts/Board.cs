@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 
 
@@ -11,9 +9,10 @@ public class Board
     private int[,] grid;
     // head of the laser
     public List<Laser> laserHeads { get; }
-
+    public bool isHumanTurn { get; set; }
     public static readonly int COLS = 7;
     public static readonly int ROWS = 6;
+    
 
     public Board()
     {
@@ -116,6 +115,34 @@ public class Board
                 }
                 laserHead.position = laserHead.position + laserHead.direction;
                 break;
+        }
+    }
+
+    public bool IsFinished()
+    {
+        if (isHumanTurn)
+        {
+            for (int i = 0; i < laserHeads.Count; ++i)
+            {
+                if (laserHeads[i].position.y != ROWS - 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        else
+        {
+            for (int i = 0; i < laserHeads.Count; ++i)
+            {
+                if (laserHeads[i].position.y != 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 
