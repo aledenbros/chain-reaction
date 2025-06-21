@@ -761,8 +761,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1264110780}
+  blank: {fileID: 0}
   verticalLaser: {fileID: 11400000, guid: 8c0093213088db24181801c0bff3e152, type: 2}
   horizontalLaser: {fileID: 11400000, guid: 0297864f9b0d52d4f85e8c4a489679b7, type: 2}
+  oneInOneOut: {fileID: 11400000, guid: 8a694e81082328e4da38e6cdeeb139ae, type: 2}
+  oneInTwoOut: {fileID: 11400000, guid: 05b37c67d2ad6ef45a630c78f1f76d0e, type: 2}
+  twoInOneOut: {fileID: 11400000, guid: 5aa4defbdef720f4cb47fa87d3b72eaa, type: 2}
+  mirrorPositive: {fileID: 11400000, guid: a9e1387076433a241b8524cc4c96fc3b, type: 2}
+  mirrorNegative: {fileID: 11400000, guid: c3e861de5b920bb4396603a950fcb85d, type: 2}
+  oneInOneOutOn: {fileID: 0}
+  oneInTwoOutOn: {fileID: 0}
+  twoInOneOutOn: {fileID: 0}
+  mirrorPositiveOn: {fileID: 0}
+  mirrorNegativeOn: {fileID: 0}
 --- !u!4 &848131498
 Transform:
   m_ObjectHideFlags: 0

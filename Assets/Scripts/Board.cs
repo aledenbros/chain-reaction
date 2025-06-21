@@ -12,8 +12,8 @@ public class Board
     public Laser[] laserHeads;
 
 
-    public static readonly int WIDTH = 7;
-    public static readonly int LENGTH = 6;
+    public static readonly int COLS = 7;
+    public static readonly int ROWS = 6;
 
     public static readonly int NORTH = 1;
     public static readonly int EAST = 2;
