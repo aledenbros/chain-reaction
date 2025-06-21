@@ -7,7 +7,7 @@ using UnityEngine;
 public class Board
 {
     // grid displays the state of each tile on the board
-    private int[] grid;
+    private int[,] grid;
     // head of the laser
     public Laser[] laserHeads;
 
@@ -15,14 +15,22 @@ public class Board
     const int width = 7;
     const int length = 6;
 
-    public void Initialize()
+    public void Initialize(int[,] obstacles)
     {
-        grid = new int[6, 7];
-        laserHeads = new Laser[3];
+        for (int x = 0; x < 6; ++x)
+        {
+            for (int y = 0; y < 7; ++y)
+            {
+                Board.grid[x, y] = obstacles[x, y];
+            }
+        }
+
+        Board.laserHeads[0] = new Laser();
     }
 
-    public Board(int[] grid)
+    public Board()
     {
+        grid = new int[6, 7]
         laserHeads = new Laser[3];
     }
 
@@ -39,5 +47,7 @@ public class Board
             laserHeads[i].Confine();
         }
     }
+
+
 
 }
