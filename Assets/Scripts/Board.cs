@@ -39,9 +39,11 @@ public class Board
 
     public void Step()
     {
-        for (int i = 0; i < 3; ++i)
+        Laser[] toStep = new Laser[35];
+        laserHeads.CopyTo(toStep);
+        foreach (Laser i in toStep)
         {
-            Steplaser(laser);
+            StepLaser(i);
         }
     }
 
@@ -52,18 +54,59 @@ public class Board
             case 0:
                 laserHead.position = laserHead.position + laserHead.direction;
                 break;
-            case 1:
-                laserHead.position = laserHead.position + laserHead.direction;
-                break;
-            case 2:
-                laserHead.position = laserHead.position + laserHead.direction;
-                break;
             case 3:
                 laserHead.state = (laserHead.state + 1) % 10;
                 laserHead.position = laserHead.position + laserHead.direction;
                 break;
-            case 4:
+            case 5:
                 laserHead.direction = Vector3Int.left;
+                Laser right = new Laser();
+                right.position = laserHead.position + (Vector3Int.right * 2);
+                right.direction = Vector3Int.right;
+                right.state = laserHead.state;
+                laserHead.state /= 2;
+                right.state -= laserHead.state;
+                laserHeads.Add(right);
+                break;
+            case 8:
+                break;
+            case 11:
+                if (laserHead.direction == Vector3Int.up)
+                {
+                    laserHead.direction = Vector3Int.right;
+                } 
+                else if (laserHead.direction == Vector3Int.right)
+                {
+                    laserHead.direction = Vector3Int.up;
+                }
+                else if (laserHead.direction == Vector3Int.down)
+                {
+                    laserHead.direction = Vector3Int.left;
+                }
+                else if (laserHead.direction == Vector3Int.left)
+                {
+                    laserHead.direction = Vector3Int.down;
+                }
+                laserHead.position = laserHead.position + laserHead.direction;
+                break;
+            case 13:
+                if (laserHead.direction == Vector3Int.up)
+                {
+                    laserHead.direction = Vector3Int.left;
+                } 
+                else if (laserHead.direction == Vector3Int.left)
+                {
+                    laserHead.direction = Vector3Int.up;
+                }
+                else if (laserHead.direction == Vector3Int.down)
+                {
+                    laserHead.direction = Vector3Int.right;
+                }
+                else if (laserHead.direction == Vector3Int.right)
+                {
+                    laserHead.direction = Vector3Int.down;
+                }
+                laserHead.position = laserHead.position + laserHead.direction;
                 break;
         }
     }
