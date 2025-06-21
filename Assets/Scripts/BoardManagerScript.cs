@@ -63,10 +63,6 @@ public class BoardManagerScript : MonoBehaviour
         
     }
 
-    public void UpdateLaser()
-    {
-        // tilemap.SetTile(board.laserHead.position, verticalLaser);
-    }
 
     public void StartLevel()
     {

@@ -9,7 +9,8 @@ public class Board
     // grid displays the state of each tile on the board
     private int[,] grid;
     // head of the laser
-    public Laser[] laserHeads;
+    private List<Laser> laserHeads;
+
 
 
     public static readonly int COLS = 7;
@@ -18,7 +19,7 @@ public class Board
     public Board()
     {
         grid = new int[6, 7];
-        laserHeads = new Laser[3];
+        laserHeads = new List<Laser>(35);
     }
 
     public void Initialize(int[,] obstacles)
@@ -31,26 +32,39 @@ public class Board
             }
         }
 
-        Board.laserHeads[0] = new Laser();
+        laserHeads.Item[0] = new Laser();
     }
 
-    public Board()
-    {
-        grid = new int[6, 7];
-        laserHeads = new Laser[3];
-    }
 
     public void Step()
     {
-        for (int i = 0; i < 3; ++i)
+        int i = 0;
+        while (laserHeads.Item[i] != null)
         {
-            if (laserHeads[i] == null)
-            {
-                continue;
-            }
+            Steplaser(laser);
+        }
+    }
 
-            laserHeads[i].position = laserHeads[i].position + laserHeads[i].direction;
-            laserHeads[i].Confine();
+    public void StepLaser(Laser laserHead)
+    {  
+        switch (grid[laserHead.position.x, laserHead.position.y])
+        {
+            case 0:
+                laserHead.position = laserHead.position + laserHead.direction;
+                break;
+            case 1:
+                laserHead.position = laserHead.position + laserHead.direction;
+                break;
+            case 2:
+                laserHead.position = laserHead.position + laserHead.direction;
+                break;
+            case 3:
+                laserHead.state = (laserHead.state + 1) % 10;
+                laserHead.position = laserHead.position + laserHead.direction;
+                break;
+            case 4:
+                laserHead.direction = Vector3Int.left;
+                break;
         }
     }
 
