@@ -16,9 +16,9 @@ public class Laser
 
     public bool Confine()
     {
-        if (position.y > Board.LENGTH - 1)
+        if (position.y > Board.ROWS - 1)
         {
-            position.y = Board.LENGTH - 1;
+            position.y = Board.ROWS - 1;
             return true;
         }
         else if (position.y < 0)
@@ -27,9 +27,9 @@ public class Laser
             return true;
         }
 
-        if (position.x > Board.WIDTH - 1)
+        if (position.x > Board.COLS - 1)
         {
-            position.x = Board.WIDTH - 1;
+            position.x = Board.COLS - 1;
             return true;
         }
         else if (position.x < 0)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 
@@ -38,8 +39,7 @@ public class Board
 
     public void Step()
     {
-        int i = 0;
-        while (laserHeads.Item[i] != null)
+        for (int i = 0; i < 3; ++i)
         {
             Steplaser(laser);
         }
@@ -68,6 +68,14 @@ public class Board
         }
     }
 
+    public int GetSquareAt(int row, int col)
+    {
+        return grid[row, col];
+    }
 
+    public void SetSquareAt(int row, int col, int square)
+    {
+        grid[row, col] = square;
+    }
 
 }

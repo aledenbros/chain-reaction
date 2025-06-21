@@ -57,6 +57,10 @@ public class BoardManagerScript : MonoBehaviour
             { 0, 0, 0, 3, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 },
         });
+
+        currentLevel = 0;
+
+        StartLevel();
     }
     public void UpdateBoard()
     {
@@ -77,11 +81,11 @@ public class BoardManagerScript : MonoBehaviour
 
     public void SetBoard()
     {
-        for (int i = 0; i < Board.ROWS; i++)
+        for (int i = 0; i < Board.ROWS; ++i)
         {
-            for (int j = 0; j < Board.COLS; j++)
+            for (int j = 0; j < Board.COLS; ++j)
             {
-                
+                SetTile(board.GetSquareAt(i, j), i, j);
             }
         }
     }
