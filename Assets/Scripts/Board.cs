@@ -43,6 +43,7 @@ public class Board
     {
         Laser[] toStep = new Laser[35];
         laserHeads.CopyTo(toStep);
+
         foreach (Laser i in toStep)
         {
             StepLaser(i);
