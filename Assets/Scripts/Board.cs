@@ -15,11 +15,6 @@ public class Board
     public static readonly int COLS = 7;
     public static readonly int ROWS = 6;
 
-    public static readonly int NORTH = 1;
-    public static readonly int EAST = 2;
-    public static readonly int SOUTH = 3;
-    public static readonly int WEST = 4;
-
     public Board()
     {
         grid = new int[6, 7];
@@ -36,7 +31,13 @@ public class Board
             }
         }
 
-        laserHeads[0] = new Laser();
+        Board.laserHeads[0] = new Laser();
+    }
+
+    public Board()
+    {
+        grid = new int[6, 7];
+        laserHeads = new Laser[3];
     }
 
     public void Step()
