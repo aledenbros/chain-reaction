@@ -31,7 +31,7 @@ public class Board
             }
         }
 
-        laserHeads.Item[0] = new Laser();
+        laserHeads[0] = new Laser();
     }
 
 
@@ -67,6 +67,16 @@ public class Board
                 laserHeads.Add(right);
                 break;
             case 8:
+                Laser second = laserHeads.Find(laser => ((laser.position == 
+                laserHead.position && (laser.direction != laserHead.direction))));
+                if (second != null)
+                {
+                    laserHead.state = (laserHead.state + second.state) % 10;
+                    laserHeads.RemoveAt(laserHeads.FindIndex(laser => ((laser.position == 
+                                        laserHead.position && (laser.direction != laserHead.direction)))));
+                    laserHead.direction = Vector3Int.up;
+                    laserHead.position = laserHead.position + laserHead.direction;
+                }
                 break;
             case 11:
                 if (laserHead.direction == Vector3Int.up)
