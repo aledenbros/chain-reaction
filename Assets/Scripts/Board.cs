@@ -10,9 +10,7 @@ public class Board
     // grid displays the state of each tile on the board
     private int[,] grid;
     // head of the laser
-    private List<Laser> laserHeads;
-
-
+    public List<Laser> laserHeads { get; }
 
     public static readonly int COLS = 7;
     public static readonly int ROWS = 6;
@@ -114,6 +112,11 @@ public class Board
     public int GetSquareAt(int row, int col)
     {
         return grid[row, col];
+    }
+
+    public int GetSquareAt(Vector3Int position)
+    {
+        return GetSquareAt(position.x, position.y);
     }
 
     public void SetSquareAt(int row, int col, int square)
