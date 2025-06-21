@@ -8,10 +8,6 @@ public class Laser
 
     const int width = 7;
     const int length = 6;
-    const int NORTH = 1;
-    const int EAST = 2;
-    const int SOUTH = 3;
-    const int WEST = 4;
 
     public Laser()
     {

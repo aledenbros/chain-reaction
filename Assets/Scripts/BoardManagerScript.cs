@@ -11,7 +11,12 @@ public class BoardManagerScript : MonoBehaviour
 
     private Board board;
 
-    void UpdateHead()
+    public void UpdateBoard()
+    {
+        
+    }
+
+    public void UpdateHead()
     {
         tilemap.SetTile(board.laserHead.position, verticalLaser);
     }
