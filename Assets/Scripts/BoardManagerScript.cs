@@ -29,12 +29,18 @@ public class BoardManagerScript : MonoBehaviour
     private List<int[,]> levels = new List<int[,]>();
     private int currentLevel = 0;
     private GameManagerScript gameManagerScript;
-    private bool isSimulating;
+    private bool isSimulating = true;
     private float simulationClock;
+    private float testClock;
+    private int count = 1;
+
+
+    private static readonly float SIM_RATE = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("started");
         gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
 
         tiles = new Tile[] {
@@ -65,8 +71,8 @@ public class BoardManagerScript : MonoBehaviour
         });
 
         currentLevel = 0;
-        isSimulating = false;
-        simulationClock = 0.1f;
+        isSimulating = true;
+        simulationClock = SIM_RATE;
 
 
         StartLevel();
@@ -74,6 +80,7 @@ public class BoardManagerScript : MonoBehaviour
 
     public void DrawLaserHeads()
     {
+        Debug.Log("Drawing laser heads");
         for (int i = 0; i < board.laserHeads.Count; ++i)
         {
             if (board.GetSquareAt(board.laserHeads[i].position) == 0 && board.laserHeads[i].direction.x == 0)
@@ -105,7 +112,10 @@ public class BoardManagerScript : MonoBehaviour
     public void StartLevel()
     {
         board = new Board();
+        Debug.Log("initializing");
         board.Initialize(levels[currentLevel]);
+
+        Debug.Log("drawing board 1");
         DrawBoard();
     }
 
@@ -121,6 +131,7 @@ public class BoardManagerScript : MonoBehaviour
 
     public void DrawBoard()
     {
+        Debug.Log("drawing board...");
         for (int i = 0; i < Board.ROWS; ++i)
         {
             for (int j = 0; j < Board.COLS; ++j)
@@ -137,22 +148,23 @@ public class BoardManagerScript : MonoBehaviour
         if (isSimulating)
         {
             simulationClock -= Time.deltaTime;
+            Debug.Log(simulationClock);
 
             if (simulationClock < 0)
             {
+                Debug.Log("Board update " + count++);
                 if (board.IsFinished())
                 {
                     isSimulating = false;
-                    simulationClock = 0.1f;
                 } 
                 else
                 {
+                    Debug.Log("Stepping");
                     board.Step();
                     DrawLaserHeads();
-
-                    simulationClock = 0.1f;
                 }
 
+                simulationClock = SIM_RATE;
             }
         }
     }

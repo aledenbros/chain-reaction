@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Laser
 {
+    // position.x is column, position.y is row
     public Vector3Int position;
     public int state;
     public Vector3Int direction;
@@ -9,9 +10,16 @@ public class Laser
 
     public Laser()
     {
-        position = new Vector3Int(3, 0, 0);
+        position = new Vector3Int(3, 5, 0);
         state = 1;
         direction = Vector3Int.up;
+    }
+
+    public Laser(Vector3Int position, int state, Vector3Int direction)
+    {
+        this.position = position;
+        this.state = state;
+        this.direction = direction;
     }
 
     public bool Confine()
