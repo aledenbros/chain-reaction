@@ -51,8 +51,9 @@ public class Board
     }
 
     public void StepLaser(Laser laserHead)
-    {  
-        switch (grid[laserHead.position.x, laserHead.position.y])
+    {
+        Debug.Log(laserHead.position);
+        switch (grid[laserHead.position.y, laserHead.position.x])
         {
             case 0:
                 laserHead.position = laserHead.position + laserHead.direction;

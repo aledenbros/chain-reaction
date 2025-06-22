@@ -97,7 +97,7 @@ public class BoardManagerScript : MonoBehaviour
             }
             else if (board.GetSquareAt(board.laserHeads[i].position) == 5 || board.GetSquareAt(board.laserHeads[i].position) == 8)
             {
-                if (gameManagerScript.isHumanTurn)
+                if (gameManagerScript.laserDirection == "up")
                 {
                     SetTile(board.GetSquareAt(board.laserHeads[i].position) + 1, board.laserHeads[i].position);
                 }
@@ -148,13 +148,14 @@ public class BoardManagerScript : MonoBehaviour
         if (isSimulating)
         {
             simulationClock -= Time.deltaTime;
-            Debug.Log(simulationClock);
+
 
             if (simulationClock < 0)
             {
                 Debug.Log("Board update " + count++);
                 if (board.IsFinished())
                 {
+                    Debug.Log("done " + board.laserHeads[0].position);
                     isSimulating = false;
                 } 
                 else
