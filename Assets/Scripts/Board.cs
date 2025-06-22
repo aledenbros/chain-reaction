@@ -73,45 +73,45 @@ public class Board
                     laserHead.state = (laserHead.state + second.state) % 10;
                     laserHeads.RemoveAt(laserHeads.FindIndex(laser => ((laser.position == 
                                         laserHead.position && (laser.direction != laserHead.direction)))));
-                    laserHead.direction = Vector3Int.up;
+                    laserHead.direction = Vector3Int.down;
                     laserHead.position = laserHead.position + laserHead.direction;
                 }
                 break;
             case 11:
-                if (laserHead.direction == Vector3Int.up)
+                if (laserHead.direction == Vector3Int.down)
                 {
                     laserHead.direction = Vector3Int.right;
                 } 
                 else if (laserHead.direction == Vector3Int.right)
                 {
-                    laserHead.direction = Vector3Int.up;
+                    laserHead.direction = Vector3Int.down;
                 }
-                else if (laserHead.direction == Vector3Int.down)
+                else if (laserHead.direction == Vector3Int.up)
                 {
                     laserHead.direction = Vector3Int.left;
                 }
                 else if (laserHead.direction == Vector3Int.left)
                 {
-                    laserHead.direction = Vector3Int.down;
+                    laserHead.direction = Vector3Int.up;
                 }
                 laserHead.position = laserHead.position + laserHead.direction;
                 break;
             case 13:
-                if (laserHead.direction == Vector3Int.up)
+                if (laserHead.direction == Vector3Int.down)
                 {
                     laserHead.direction = Vector3Int.left;
                 } 
                 else if (laserHead.direction == Vector3Int.left)
                 {
-                    laserHead.direction = Vector3Int.up;
+                    laserHead.direction = Vector3Int.down;
                 }
-                else if (laserHead.direction == Vector3Int.down)
+                else if (laserHead.direction == Vector3Int.up)
                 {
                     laserHead.direction = Vector3Int.right;
                 }
                 else if (laserHead.direction == Vector3Int.right)
                 {
-                    laserHead.direction = Vector3Int.down;
+                    laserHead.direction = Vector3Int.up;
                 }
                 laserHead.position = laserHead.position + laserHead.direction;
                 break;
@@ -124,7 +124,7 @@ public class Board
         {
             for (int i = 0; i < laserHeads.Count; ++i)
             {
-                if (laserHeads[i].position.y != ROWS - 1)
+                if (laserHeads[i].position.y != 0)
                 {
                     return false;
                 }
@@ -136,7 +136,7 @@ public class Board
         {
             for (int i = 0; i < laserHeads.Count; ++i)
             {
-                if (laserHeads[i].position.y != 0)
+                if (laserHeads[i].position.y != ROWS - 1)
                 {
                     return false;
                 }

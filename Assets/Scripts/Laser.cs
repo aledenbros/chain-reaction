@@ -9,9 +9,9 @@ public class Laser
 
     public Laser()
     {
-        position = new Vector3Int(3, 0, 0);
+        position = new Vector3Int(5, 3, 0);
         state = 1;
-        direction = Vector3Int.up;
+        direction = Vector3Int.down;
     }
 
     public bool Confine()
