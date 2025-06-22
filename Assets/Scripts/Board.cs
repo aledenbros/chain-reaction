@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,15 +23,19 @@ public class Board
 
     public void Initialize(int[,] obstacles)
     {
+        Debug.Log(grid.GetLength(0) + ", " + grid.GetLength(1));
+
         for (int x = 0; x < 6; ++x)
         {
             for (int y = 0; y < 7; ++y)
             {
+                //Debug.Log("X: " + x + " ,Y: " + y);
                 grid[x, y] = obstacles[x, y];
             }
         }
 
-        laserHeads[0] = new Laser();
+        laserHeads.Add(new Laser());
+        Debug.Log("done init");
     }
 
 
@@ -38,6 +43,7 @@ public class Board
     {
         Laser[] toStep = new Laser[35];
         laserHeads.CopyTo(toStep);
+
         foreach (Laser i in toStep)
         {
             StepLaser(i);
@@ -57,23 +63,27 @@ public class Board
                 break;
             case 5:
                 laserHead.direction = Vector3Int.left;
-                Laser right = new Laser();
-                right.position = laserHead.position + (Vector3Int.right * 2);
-                right.direction = Vector3Int.right;
-                right.state = laserHead.state;
+                Laser right = new Laser(laserHead.position + 2 * Vector3Int.right, laserHead.state, Vector3Int.right);
+
                 laserHead.state /= 2;
                 right.state -= laserHead.state;
+
                 laserHeads.Add(right);
                 break;
             case 8:
-                Laser second = laserHeads.Find(laser => ((laser.position == 
-                laserHead.position && (laser.direction != laserHead.direction))));
+                Laser second = laserHeads.Find(
+                    (laser) => laser.position == laserHead.position && laser.direction != laserHead.direction
+                );
+
                 if (second != null)
                 {
                     laserHead.state = (laserHead.state + second.state) % 10;
-                    laserHeads.RemoveAt(laserHeads.FindIndex(laser => ((laser.position == 
-                                        laserHead.position && (laser.direction != laserHead.direction)))));
-                    laserHead.direction = Vector3Int.down;
+
+                    laserHeads.RemoveAt(laserHeads.FindIndex(
+                        (laser) => laser.position == laserHead.position && laser.direction != laserHead.direction)
+                    );
+
+                    laserHead.direction = Vector3Int.up;
                     laserHead.position = laserHead.position + laserHead.direction;
                 }
                 break;
