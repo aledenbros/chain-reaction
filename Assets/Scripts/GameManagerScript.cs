@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject pickHandButtons;
+    [SerializeField] private GameObject pickButtons;
+    [SerializeField] private GameObject fireButtons;
 
+    private BoardManagerScript boardManagerScript;
     private Player human;
     private Player computer;
     public bool isHumanTurn { get; private set; }
-    public string laserDirection { get; private set; }
+    public int laserDirection { get; private set; }
 
     // 0 for taking stage, 1 for attacking stage
     private string turnState;
@@ -19,6 +21,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boardManagerScript = GameObject.FindGameObjectWithTag("BoardManager").GetComponent<BoardManagerScript>();
         human = new Player();
         computer = new Player();
         StartTurn();
@@ -27,15 +30,21 @@ public class GameManagerScript : MonoBehaviour
     void OnPickLeft()
     {
         Debug.Log("picked left");
-        laserDirection = isHumanTurn ? "down" : "up";
+        SetLaserDirection(isHumanTurn ? -1 : 1);
+
         turnState = "firing";
+        pickButtons.SetActive(false);
+        fireButtons.SetActive(true);
     }
 
     void OnPickRight()
     {
         Debug.Log("picked right");
-        laserDirection = isHumanTurn ? "down" : "up";
+        SetLaserDirection(isHumanTurn ? -1 : 1);
+
         turnState = "firing";
+        pickButtons.SetActive(false);
+        fireButtons.SetActive(true);
 
     }
 
@@ -44,27 +53,21 @@ public class GameManagerScript : MonoBehaviour
 
     }
 
-    public void FireLeft()
+    public void OnFireLeft()
     {
-        if (turnState == "picking")
-        {
-            
-        } 
-        else
-        {
-            
-        }
+
     }
 
-    public void FireRight()
+    public void OnFireRight()
     {
+
     }
 
     void StartTurn()
     {
         turnState = "picking";
 
-        pickHandButtons.SetActive(true);
+        pickButtons.SetActive(true);
     }
 
     // Update is called once per frame
@@ -74,5 +77,11 @@ public class GameManagerScript : MonoBehaviour
         {
 
         }
+    }
+
+    private void SetLaserDirection(int direction)
+    {
+        laserDirection = direction;
+        boardManagerScript.SetLaserDirection(direction);
     }
 }

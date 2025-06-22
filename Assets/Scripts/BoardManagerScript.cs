@@ -149,7 +149,6 @@ public class BoardManagerScript : MonoBehaviour
         {
             simulationClock -= Time.deltaTime;
 
-
             if (simulationClock < 0)
             {
                 Debug.Log("Board update " + count++);
@@ -168,5 +167,12 @@ public class BoardManagerScript : MonoBehaviour
                 simulationClock = SIM_RATE;
             }
         }
+
+    }
+
+
+    public void SetLaserDirection(int direction)
+    {
+        board.laserDirection = direction;
     }
 }

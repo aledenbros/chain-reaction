@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Player
 {
-    public int leftPoints { get; set; }
-    public int rightPoints { get; set; }
+    public int left { get; set; }
+    public int right { get; set; }
     public bool crossBowLoaded;
     public int ammo;
 
 
     public Player()
     {
-        leftPoints = 1;
-        rightPoints = 1;
+        left = 1;
+        right = 1;
         crossBowLoaded = false;
         ammo = 0;
     }

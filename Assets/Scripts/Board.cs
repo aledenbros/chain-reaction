@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -10,7 +11,7 @@ public class Board
     private int[,] grid;
     // head of the laser
     public List<Laser> laserHeads { get; }
-    public bool isHumanTurn { get; set; }
+    public int laserDirection { private get; set; }
     public static readonly int COLS = 7;
     public static readonly int ROWS = 6;
     
@@ -19,6 +20,7 @@ public class Board
     {
         grid = new int[6, 7];
         laserHeads = new List<Laser>(35);
+        laserDirection = 0;
     }
 
     public void Initialize(int[,] obstacles)
@@ -51,7 +53,7 @@ public class Board
     }
 
     public void StepLaser(Laser laserHead)
-    {
+    {  
         Debug.Log(laserHead.position);
         switch (grid[laserHead.position.y, laserHead.position.x])
         {
@@ -131,7 +133,7 @@ public class Board
 
     public bool IsFinished()
     {
-        if (isHumanTurn)
+        if (laserDirection > 0)
         {
             for (int i = 0; i < laserHeads.Count; ++i)
             {
@@ -143,7 +145,7 @@ public class Board
 
             return true;
         }
-        else
+        else if (laserDirection < 0)
         {
             for (int i = 0; i < laserHeads.Count; ++i)
             {
