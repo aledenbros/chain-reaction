@@ -144,7 +144,7 @@ public class Board
 
             return true;
         }
-        else 
+        else if (laserDirection < 0)
         {
             for (int i = 0; i < laserHeads.Count; ++i)
             {
