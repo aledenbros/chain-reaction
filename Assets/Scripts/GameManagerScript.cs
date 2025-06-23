@@ -20,23 +20,26 @@ public class GameManagerScript : MonoBehaviour
     private string turnState;
     private bool isReallocating;
 
+    private int leftReallocate;
+    private int rightReallocate;
+
     // Start is called before the first frame update
     void Start()
     {
-        isReallocating = true; // Change to false
+        isReallocating = false; // Change to false
         boardManagerScript = GameObject.FindGameObjectWithTag("BoardManager").GetComponent<BoardManagerScript>();
         humanPlayer = new Player();
         computer = new Player();
         StartTurn();
     }
 
-    public void OnPickLeft()
+    void OnPickLeft()
     {
         Debug.Log("picked left");
 
     }
 
-    public void OnPickRight()
+    void OnPickRight()
     {
         Debug.Log("picked right");
         
@@ -55,13 +58,17 @@ public class GameManagerScript : MonoBehaviour
 
     public void OnStartReallocate()
     {
+        leftReallocate = humanPlayer.left;
+        rightReallocate = humanPlayer.right;
         isReallocating = true;
+        reallocateSubmit.SetActive(true);
+        pickButtons.SetActive(false);
     }
 
-    public void OnSubmitReallocate(int left, int right)
+    public void OnSubmitReallocate()
     {
-        humanPlayer.left = left;
-        humanPlayer.right = right;
+        humanPlayer.left = leftReallocate;
+        humanPlayer.right = rightReallocate;
         isReallocating = false;
         reallocateSubmit.SetActive(false);
     }
@@ -127,9 +134,17 @@ public class GameManagerScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                int totalValue = humanPlayer.right + humanPlayer.left + 1;
-                Debug.Log(Math.Floor(Input.mousePosition.x / Screen.width * totalValue));
+                int totalValue = humanPlayer.right + humanPlayer.left;
+                leftReallocate = (int)(Input.mousePosition.x / Screen.width * (totalValue + 1));
+                rightReallocate = totalValue - leftReallocate;
 
+                Debug.Log(leftReallocate + " " + rightReallocate);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                OnSubmitReallocate();
+                Debug.Log("Submitted: " + humanPlayer.left + " " + humanPlayer.right);
             }
         }
     }
