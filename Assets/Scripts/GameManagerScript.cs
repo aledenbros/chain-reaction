@@ -8,6 +8,7 @@ public class GameManagerScript : MonoBehaviour
 {
     [SerializeField] private GameObject pickButtons;
     [SerializeField] private GameObject fireButtons;
+    [SerializeField] private GameObject reallocateSubmit;
 
     private BoardManagerScript boardManagerScript;
     private Player humanPlayer;
@@ -17,16 +18,16 @@ public class GameManagerScript : MonoBehaviour
 
     // 0 for taking stage, 1 for attacking stage
     private string turnState;
+    private bool isReallocating;
 
     // Start is called before the first frame update
     void Start()
     {
+        isReallocating = true; // Change to false
         boardManagerScript = GameObject.FindGameObjectWithTag("BoardManager").GetComponent<BoardManagerScript>();
         humanPlayer = new Player();
         computer = new Player();
         StartTurn();
-
-
     }
 
     void OnPickLeft()
@@ -52,7 +53,18 @@ public class GameManagerScript : MonoBehaviour
         fireButtons.SetActive(true);
     }
 
+    public void OnStartReallocate()
+    {
+        isReallocating = true;
+    }
 
+    public void OnSubmitReallocate(int left, int right)
+    {
+        humanPlayer.left = left;
+        humanPlayer.right = right;
+        isReallocating = false;
+        reallocateSubmit.SetActive(false);
+    }
 
     void StartSim()
     {
@@ -109,6 +121,16 @@ public class GameManagerScript : MonoBehaviour
         if (isHumanTurn)
         {
 
+        }
+
+        if (isReallocating)
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                int totalValue = humanPlayer.right + humanPlayer.left + 1;
+                Debug.Log(Math.Floor(Input.mousePosition.x / Screen.width * totalValue));
+
+            }
         }
     }
 

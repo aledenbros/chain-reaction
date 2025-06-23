@@ -71,7 +71,7 @@ public class BoardManagerScript : MonoBehaviour
         });
 
         currentLevel = 0;
-        isSimulating = true;
+        isSimulating = false;
         simulationClock = SIM_RATE;
 
 
@@ -152,9 +152,16 @@ public class BoardManagerScript : MonoBehaviour
             if (simulationClock < 0)
             {
                 Debug.Log("Board update " + count++);
+                if (board.laserHeads.Count == 0)
+                {
+                    Debug.Log("No laser heads");
+                    isSimulating = false;
+                    return;
+                }
+                
                 if (board.IsFinished())
                 {
-                    Debug.Log("done " + board.laserHeads[0].position);
+                    Debug.Log("done");
                     isSimulating = false;
                 } 
                 else
