@@ -108,21 +108,55 @@ public class GameManagerScript : MonoBehaviour
     private void OnFire(int hand, int value)
     {
         SetLaserDirection(isHumanTurn ? 1 : -1);
-        
+        if (value <= 5)
+        {
+            return;
+        }
         if (value == 6)
         {
-            if (isHumanTurn && hand == 0)
+            if (isHumanTurn && hand == 0 && humanPlayer.right > 0)
             {
                 --humanPlayer.right;
             }
-            else if (isHumanTurn && hand == 1)
+            else if (isHumanTurn && hand == 1 && humanPlayer.left > 0)
             {
                 --humanPlayer.left;
             }
+            else if (!isHumanTurn && hand == 0 && computer.right > 0)
+            {
+                --computer.right;
+            }
+            else if (!isHumanTurn && hand == 1 && computer.left > 0)
+            {
+                --computer.left;
+            }
+            else
+            {
+                return;
+            }
         }
-        if (value == 7)
+        else if (value == 7 || value == 8)
         {
-
+            if (isHumanTurn && hand == 0 && humanPlayer.rightAmmo > 0)
+            {
+                --humanPlayer.rightAmmo
+            }
+            else if (isHumanTurn && hand == 1 && humanPlayer.leftAmmo > 0)
+            {
+                --humanPlayer.leftAmmo
+            }
+            else if (!isHumanTurn && hand == 0 && computer.rightAmmo > 0)
+            {
+                --computer.rightAmmo
+            }
+            else if (!isHumanTurn && hand == 1 && computer.leftAmmo > 0)
+            {
+                --computer.leftAmmo
+            }
+            else
+            {
+                return;
+            }
         }
 
         boardManagerScript.AddStartingLaser(value);
