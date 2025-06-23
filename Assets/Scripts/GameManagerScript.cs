@@ -30,13 +30,13 @@ public class GameManagerScript : MonoBehaviour
         StartTurn();
     }
 
-    void OnPickLeft()
+    public void OnPickLeft()
     {
         Debug.Log("picked left");
 
     }
 
-    void OnPickRight()
+    public void OnPickRight()
     {
         Debug.Log("picked right");
         
