@@ -27,7 +27,7 @@ public class GameManagerScript : MonoBehaviour
         StartTurn();
     }
 
-    void OnPickLeft()
+    public void OnPickLeft()
     {
         Debug.Log("picked left");
         SetLaserDirection(isHumanTurn ? -1 : 1);
@@ -37,7 +37,7 @@ public class GameManagerScript : MonoBehaviour
         fireButtons.SetActive(true);
     }
 
-    void OnPickRight()
+    public void OnPickRight()
     {
         Debug.Log("picked right");
         SetLaserDirection(isHumanTurn ? -1 : 1);
