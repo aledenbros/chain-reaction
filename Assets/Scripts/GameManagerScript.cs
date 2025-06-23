@@ -35,26 +35,20 @@ public class GameManagerScript : MonoBehaviour
 
     void OnPickLeft()
     {
-        if (!boardManagerScript.isSimulating)
-        {
         Debug.Log("picked left");
         
         int value = isHumanTurn ? computer.left : humanPlayer.left;
 
         OnPick(value);
-        }
     }
 
     void OnPickRight()
     {
-        if (!boardManagerScript.isSimulating)
-        {
         Debug.Log("picked right");
 
         int value = isHumanTurn ? computer.right : humanPlayer.right;
 
         OnPick(value);
-        }
         
     }
 
@@ -93,22 +87,16 @@ public class GameManagerScript : MonoBehaviour
 
     public void OnFireLeft()
     {
-        if (!boardManagerScript.isSimulating)
-        {
         int value = isHumanTurn ? humanPlayer.left : computer.left;
         
         OnFire(0, value);
-        }
     }
 
     public void OnFireRight()
     {
-        if (!boardManagerScript.isSimulating)
-        {
         int value = isHumanTurn ? humanPlayer.right : computer.right;
         
         OnFire(1, value);
-        }
     }
 
     // 0 is left, 1 is right
@@ -146,19 +134,19 @@ public class GameManagerScript : MonoBehaviour
         {
             if (isHumanTurn && hand == 0 && humanPlayer.rightAmmo > 0)
             {
-                --humanPlayer.rightAmmo
+                --humanPlayer.rightAmmo;
             }
             else if (isHumanTurn && hand == 1 && humanPlayer.leftAmmo > 0)
             {
-                --humanPlayer.leftAmmo
+                --humanPlayer.leftAmmo;
             }
             else if (!isHumanTurn && hand == 0 && computer.rightAmmo > 0)
             {
-                --computer.rightAmmo
+                --computer.rightAmmo;
             }
             else if (!isHumanTurn && hand == 1 && computer.leftAmmo > 0)
             {
-                --computer.leftAmmo
+                --computer.leftAmmo;
             }
             else
             {
