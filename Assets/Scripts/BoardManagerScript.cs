@@ -29,7 +29,7 @@ public class BoardManagerScript : MonoBehaviour
     private List<int[,]> levels = new List<int[,]>();
     private int currentLevel = 0;
     private GameManagerScript gameManagerScript;
-    private bool isSimulating = true;
+    public bool isSimulating { private get; set; }
     private float simulationClock;
     private float testClock;
     private int count = 1;
@@ -174,5 +174,17 @@ public class BoardManagerScript : MonoBehaviour
     public void SetLaserDirection(int direction)
     {
         board.laserDirection = direction;
+    }
+
+    public void AddStartingLaser(int state)
+    {
+        if (gameManagerScript.laserDirection == 1)
+        {
+            board.laserHeads.Add(new Laser(new Vector3Int(3, 5, 0), state, Vector3Int.down));
+        } 
+        else
+        {
+            board.laserHeads.Add(new Laser(new Vector3Int(3, 0, 0), state, Vector3Int.up));
+        }
     }
 }

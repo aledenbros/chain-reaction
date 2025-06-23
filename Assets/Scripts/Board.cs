@@ -36,7 +36,6 @@ public class Board
             }
         }
 
-        laserHeads.Add(new Laser());
         Debug.Log("done init");
     }
 

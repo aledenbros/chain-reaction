@@ -15,6 +15,13 @@ public class Laser
         direction = Vector3Int.down;
     }
 
+    public Laser(int state)
+    {
+        position = new Vector3Int(3, 5, 0);
+        this.state = 1;
+        direction = Vector3Int.down;
+    }
+
     public Laser(Vector3Int position, int state, Vector3Int direction)
     {
         this.position = position;
