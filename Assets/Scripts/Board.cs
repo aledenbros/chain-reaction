@@ -36,7 +36,6 @@ public class Board
             }
         }
 
-        laserHeads.Add(new Laser());
         Debug.Log("done init");
     }
 
@@ -145,7 +144,7 @@ public class Board
 
             return true;
         }
-        else if (laserDirection < 0)
+        else 
         {
             for (int i = 0; i < laserHeads.Count; ++i)
             {
