@@ -157,6 +157,11 @@ public class Board
 
             return true;
         }
+        else
+        {
+            Debug.Log("laser direction 0");
+            return true;
+        }
     }
 
     public int GetSquareAt(int row, int col)

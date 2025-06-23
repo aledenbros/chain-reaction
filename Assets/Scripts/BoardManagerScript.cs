@@ -97,7 +97,7 @@ public class BoardManagerScript : MonoBehaviour
             }
             else if (board.GetSquareAt(board.laserHeads[i].position) == 5 || board.GetSquareAt(board.laserHeads[i].position) == 8)
             {
-                if (gameManagerScript.laserDirection == "up")
+                if (gameManagerScript.laserDirection == 1)
                 {
                     SetTile(board.GetSquareAt(board.laserHeads[i].position) + 1, board.laserHeads[i].position);
                 }

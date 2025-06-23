@@ -55,7 +55,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void OnFireLeft()
     {
-
+        
     }
 
     public void OnFireRight()
