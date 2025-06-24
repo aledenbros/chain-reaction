@@ -1997,8 +1997,17 @@ MonoBehaviour:
   pickButtons: {fileID: 2139312427}
   fireButtons: {fileID: 104299293}
   reallocateSubmit: {fileID: 0}
-  PlayerHands: {fileID: 1540629856}
-  ComputerHands: {fileID: 940697989}
+  computerHands: {fileID: 940697989}
+  playerHands: {fileID: 1540629856}
+  one: {fileID: 21300000, guid: 94856dd09ccfb8f4e84fb13e10526d1d, type: 3}
+  two: {fileID: 21300000, guid: 5d343133803e1f745865f54bfcaad6fe, type: 3}
+  three: {fileID: 21300000, guid: 3e1e891aed7626147b08dc38450bf2dd, type: 3}
+  four: {fileID: 21300000, guid: 995a7ca865adb73408477ff8a43f232d, type: 3}
+  five: {fileID: 21300000, guid: aef40fb58b7b33a4089e0ae92ded3ad1, type: 3}
+  six: {fileID: 21300000, guid: 2cc12761a82409a41b0cde597a8a0c7a, type: 3}
+  seven: {fileID: 21300000, guid: ad25725ae84f1844b97b29950190d97b, type: 3}
+  eight: {fileID: 21300000, guid: 21d68bf7c99809a43978bf647df2d9c8, type: 3}
+  nine: {fileID: 21300000, guid: b50215beaa506bb4890f488e44bca6b3, type: 3}
 --- !u!4 &1222352887
 Transform:
   m_ObjectHideFlags: 0

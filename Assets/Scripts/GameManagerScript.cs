@@ -9,6 +9,8 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private GameObject pickButtons;
     [SerializeField] private GameObject fireButtons;
     [SerializeField] private GameObject reallocateSubmit;
+    [SerializeField] private GameObject computerHands;
+    [SerializeField] private GameObject playerHands;
 
     [SerializeField] private Sprite one;
     [SerializeField] private Sprite two;
@@ -45,10 +47,10 @@ public class GameManagerScript : MonoBehaviour
 
     public void UpdateHands()
     {
-        UpdateHand(humanPlayer.Hands.LeftHand, humanPlayer.left);
-        UpdateHand(humanPlayer.Hands.RightHand, humanPlayer.right);
-        UpdateHand(computer.Hands.LeftHand, computerPlayer.left);
-        UpdateHand(computer.Hands.RightHand, computerPlayer.right);
+        UpdateHand(playerHands.transform.GetChild(0).gameObject, humanPlayer.left);
+        UpdateHand(playerHands.transform.GetChild(1).gameObject, humanPlayer.right);
+        UpdateHand(computerHands.transform.GetChild(0).gameObject, computer.left);
+        UpdateHand(computerHands.transform.GetChild(1).gameObject, computer.right);
     }
 
     public void UpdateHand(GameObject Hand, int value)
