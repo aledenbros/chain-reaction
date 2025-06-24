@@ -10,6 +10,16 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private GameObject fireButtons;
     [SerializeField] private GameObject reallocateSubmit;
 
+    [SerializeField] private Sprite one;
+    [SerializeField] private Sprite two;
+    [SerializeField] private Sprite three;
+    [SerializeField] private Sprite four;
+    [SerializeField] private Sprite five;
+    [SerializeField] private Sprite six;
+    [SerializeField] private Sprite seven;
+    [SerializeField] private Sprite eight;
+    [SerializeField] private Sprite nine;
+
     private BoardManagerScript boardManagerScript;
     private Player humanPlayer;
     private Player computer;
@@ -33,6 +43,51 @@ public class GameManagerScript : MonoBehaviour
         StartTurn();
     }
 
+    public void UpdateHands()
+    {
+        UpdateHand(humanPlayer.Hands.LeftHand, humanPlayer.left);
+        UpdateHand(humanPlayer.Hands.RightHand, humanPlayer.right);
+        UpdateHand(computer.Hands.LeftHand, computerPlayer.left);
+        UpdateHand(computer.Hands.RightHand, computerPlayer.right);
+    }
+
+    public void UpdateHand(GameObject Hand, int value)
+    {
+        switch (value)
+        {
+            case 1:
+                Hand.GetComponent<SpriteRenderer>().sprite = one;
+                break;
+            case 2:
+                Hand.GetComponent<SpriteRenderer>().sprite = two;
+                break;
+            case 3:
+                Hand.GetComponent<SpriteRenderer>().sprite = three;
+                break;
+            case 4:
+                Hand.GetComponent<SpriteRenderer>().sprite = four;
+                break;
+            case 5:
+                Hand.GetComponent<SpriteRenderer>().sprite = five;
+                break;
+            case 6:
+                Hand.GetComponent<SpriteRenderer>().sprite = six;
+                break;
+            case 7:
+                Hand.GetComponent<SpriteRenderer>().sprite = seven;
+                break;
+            case 8:
+                Hand.GetComponent<SpriteRenderer>().sprite = eight;
+                break;
+            case 9:
+                Hand.GetComponent<SpriteRenderer>().sprite = nine;
+                break;
+            default:
+                Hand.GetComponent<SpriteRenderer>().sprite = one;
+                break;
+        }
+    }
+
     void OnPickLeft()
     {
         Debug.Log("picked left");
@@ -49,7 +104,6 @@ public class GameManagerScript : MonoBehaviour
         int value = isHumanTurn ? computer.right : humanPlayer.right;
 
         OnPick(value);
-        
     }
 
     void OnPick(int value)
@@ -61,6 +115,7 @@ public class GameManagerScript : MonoBehaviour
         turnState = "firing";
         pickButtons.SetActive(false);
         fireButtons.SetActive(true);
+        UpdateHands();
     }
 
     public void OnStartReallocate()
@@ -158,6 +213,7 @@ public class GameManagerScript : MonoBehaviour
         boardManagerScript.isSimulating = true;
         fireButtons.SetActive(false);
         isHumanTurn = !isHumanTurn;
+        UpdateHands();
     }
 
     void StartTurn()
@@ -191,6 +247,8 @@ public class GameManagerScript : MonoBehaviour
                 OnSubmitReallocate();
                 Debug.Log("Submitted: " + humanPlayer.left + " " + humanPlayer.right);
             }
+
+            UpdateHands();
         }
     }
 

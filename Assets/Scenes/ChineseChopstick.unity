@@ -195,9 +195,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1c38b00ac9329264ab5cacbadcdedfcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94856dd09ccfb8f4e84fb13e10526d1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.32}
@@ -1997,6 +1997,8 @@ MonoBehaviour:
   pickButtons: {fileID: 2139312427}
   fireButtons: {fileID: 104299293}
   reallocateSubmit: {fileID: 0}
+  PlayerHands: {fileID: 1540629856}
+  ComputerHands: {fileID: 940697989}
 --- !u!4 &1222352887
 Transform:
   m_ObjectHideFlags: 0
@@ -2644,9 +2646,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1c38b00ac9329264ab5cacbadcdedfcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94856dd09ccfb8f4e84fb13e10526d1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.32}
